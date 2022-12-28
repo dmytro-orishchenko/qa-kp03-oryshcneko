@@ -5,6 +5,9 @@ class BufferFile:
         self.MAX_BUF_FILE_SIZE = maxSize
         self.fileName = fileName
         self.father = father
+        if self.father != None:
+            self.father.elementsCount += 1
+            father.fileList.append(self)
         self.content = []
 
     def __delete__(self):

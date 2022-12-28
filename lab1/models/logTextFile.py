@@ -2,6 +2,9 @@ class LogTextFile:
     def __init__(self, fileName, father = None):
         self.fileName = fileName
         self.father = father
+        if self.father != None:
+            self.father.elementsCount += 1
+            father.fileList.append(self)
         self.content = ''
 
     def delete(self):

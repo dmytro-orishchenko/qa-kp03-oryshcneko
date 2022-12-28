@@ -2,6 +2,9 @@ class Directory:
     def __init__(self, dirName, maxElements = 0, father = None):
         self.DIR_MAX_ELEMS = maxElements
         self.father = father
+        if self.father != None:
+            self.father.elementsCount += 1
+            father.fileList.append(self)
         self.name = dirName
         self.elementsCount = 0
         self.fileList = []
@@ -10,17 +13,17 @@ class Directory:
         print(self.dirName + ' directory was deleted')
         return
 
-    def listElements(self):
+    def listElements(self, tabulation = ''):
         answ = ''
         for item in self.fileList:
             if type(item) is Directory:
-                answ += '==='
-                answ += item.listElements()
-                answ += '==='
+                answ += tabulation + '===>' + self.name + '\n'
+                tabulation += '  '
+                answ += item.listElements(tabulation + '  ')
+                answ += tabulation + '<===\n'
 
             else:
-                answ += item.name
-                answ += ', ' 
+                answ += tabulation + item.fileName + ', ' +'\n' 
 
         return answ
 

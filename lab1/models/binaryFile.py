@@ -3,6 +3,9 @@ class BinaryFile:
         self.fileName = fileName
         self.content = content
         self.father = father
+        if self.father != None:
+            self.father.elementsCount += 1
+            father.fileList.append(self)
 
     def __delete__(self):
         print(self.fileName + ' file was deleted')
