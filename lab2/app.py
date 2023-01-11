@@ -9,7 +9,6 @@ app = Flask(__name__)
 root = Directory('root', 100)
 deleted_list = []
 
-#directory
 @app.route('/directory', methods=['POST', 'GET', 'PATCH', 'DELETE'])
 def directory():
    if request.method == 'POST':
@@ -308,4 +307,4 @@ def bufferfile():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
